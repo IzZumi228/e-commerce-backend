@@ -4,12 +4,14 @@ const productSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'Please enter a product name']
+      required: [true, 'Please enter a product name'],
+      trim: true,
+      maxlength: 100,
     },
     brand: {
       type: String
     },
-    rate: {
+    rating: {
       type: Number,
       default: 0
     },
