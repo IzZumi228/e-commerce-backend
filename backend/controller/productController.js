@@ -46,7 +46,7 @@ const getProducts = asyncHandler(async (req, res) => {
       .sort({ _id: "asc" }) // Sort by a unique field (_id in this case)
       .limit(limit)
       .skip(limit * page)
-      .select("-comments -specifications -createdAt -updatedAt"); // Exclude unnecessary fields
+      .select("-comments -specifications -createdAt -updatedAt -images -description -brand -category"); // Exclude unnecessary fields
 
     // Count total products matching the filter
     const total = await Product.countDocuments(searchFilter);
