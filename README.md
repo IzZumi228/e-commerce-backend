@@ -31,7 +31,6 @@ This is the backend for the E-Commerce platform, which provides the API endpoint
 - **Database:** MongoDB
 - **Authentication:** JWT
 - **Utilities:** bcrypt for password hashing, Fuse.js for fuzzy searching
-- **Environment Variables:** Managed with `dotenv`
 
 ---
 
@@ -48,7 +47,7 @@ Ensure you have the following installed:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/dstoneva/e-commerce-backend.git
-   cd e-commerce-backend
+   cd backend
    ```
 
 2. **Install dependencies:**
