@@ -12,7 +12,7 @@ This is the backend for the E-Commerce platform, which provides the API endpoint
   - Password hashing with bcrypt
 - **Product Management:**
   - CRUD operations for products
-  - Search functionality with fuzzy matching using Fuse.js
+  - Search functionality by exact or partial matches
 - **Category Management:**
   - Fetch and manage product categories
 - **Checkout System:**
@@ -30,7 +30,7 @@ This is the backend for the E-Commerce platform, which provides the API endpoint
 - **Backend Framework:** Node.js with Express
 - **Database:** MongoDB
 - **Authentication:** JWT
-- **Utilities:** bcrypt for password hashing, Fuse.js for fuzzy searching
+- **Utilities:** bcrypt for password hashing
 - **Environment Variables:** Managed with `dotenv`
 
 ---
@@ -48,7 +48,7 @@ Ensure you have the following installed:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/dstoneva/e-commerce-backend.git
-   cd e-commerce-backend
+   cd backend
    ```
 
 2. **Install dependencies:**
