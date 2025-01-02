@@ -49,6 +49,7 @@ Ensure you have the following installed:
    ```bash
    git clone https://github.com/dstoneva/e-commerce-backend.git
    cd backend
+   cd backend
    ```
 
 2. **Install dependencies:**
