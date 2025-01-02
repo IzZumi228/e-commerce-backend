@@ -10,34 +10,11 @@ const getProducts = asyncHandler(async (req, res) => {
     const page = +pageFromParams >= 1 ? +pageFromParams - 1 : 0;
     const MAX_PRODUCTS_PER_PAGE = 50;
 
-    // Enforce a cap on the productsPerPage value
     const limit = Math.min(+productsPerPage, MAX_PRODUCTS_PER_PAGE);
 
-    // Fetch all known product titles
-    const knownTitles = await Product.distinct("title");
-
-    // Use Fuse.js for fuzzy matching
-    let corrections = [];
-    if (search) {
-      const fuse = new Fuse(knownTitles, {
-        includeScore: true,
-        threshold: 0.3, // Adjust for more/less strict matching
-      });
-
-      // Get the top 3 corrections
-      const results = fuse.search(search);
-      corrections = results.slice(0, 3).map((result) => result.item);
-    }
-
-    // Build the search filter for the title field
     const searchFilter = search
       ? {
-          $or: [
-            { title: { $regex: search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), $options: "i" } },
-            ...corrections.map((correction) => ({
-              title: { $regex: correction.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), $options: "i" },
-            })),
-          ],
+          title: { $regex: new RegExp(`\\b${search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`), $options: "i" },
         }
       : {};
 
@@ -58,7 +35,6 @@ const getProducts = asyncHandler(async (req, res) => {
       productsPerPage: limit,
       total,
       pages: total < limit ? 1 : Math.ceil(total / limit),
-      suggestions: corrections, // Include suggestions in the response
     });
   } catch (error) {
     console.error("Server Error:", error.message);
