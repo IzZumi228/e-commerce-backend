@@ -25,6 +25,7 @@
     "formik-stepper": "^2.1.4",
     "fuse.js": "^7.0.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^6.17.0",
     "mongoose": "^6.4.6",
     "validator": "^13.7.0",
     "yup": "^0.32.11"
